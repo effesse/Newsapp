@@ -118,13 +118,13 @@ public class MainActivity extends AppCompatActivity implements
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
-        // Set empty state text to display "No earthquakes found."
+        // Set empty state text to display "No news found."
         mEmptyStateTextView.setText(R.string.no_news);
 
         // Clear the adapter of previous earthquake data
         //mAdapter.clear();
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // If there is a valid list of {@link News}, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (news != null && !news.isEmpty()) {
             mAdapter.addAll(news);
