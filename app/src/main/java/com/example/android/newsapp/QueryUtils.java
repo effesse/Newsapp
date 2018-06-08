@@ -168,17 +168,17 @@ public final class QueryUtils {
                             //All of our code in the loop
                             JSONObject currentNews = newsArray.getJSONObject(i);
 
-                            JSONObject results = currentNews.getJSONObject("results");
+                            //JSONObject results = currentNews.getJSONObject("results");
 
-                            String section = results.optString("sectionName");
-                            String title = results.optString("webTitle");
-                            String date = results.optString("webPublicationDate");
+                            String section = currentNews.optString("sectionName");
+                            String title = currentNews.optString("webTitle");
+                            String date = currentNews.optString("webPublicationDate");
 
-                            String urlNews = results.optString("webUrl");
+                            String urlNews = currentNews.optString("webUrl");
 
 
                             // Get 'fields' object
-                            JSONObject jsonFieldsObject = results.getJSONObject("fields");
+                            JSONObject jsonFieldsObject = currentNews.getJSONObject("fields");
 
                             // Get properties from 'fields'
 
