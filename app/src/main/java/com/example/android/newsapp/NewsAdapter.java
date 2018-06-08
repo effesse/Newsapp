@@ -13,12 +13,12 @@ import java.util.List;
 
     /**
      * An {@link NewsAdapter} knows how to create a list item layout for each news
-     * in the data source (a list of {@link News} objects).
+     * in the data source (a list of {@link LastNews} objects).
      *
      * These list item layouts will be provided to an adapter view like ListView
      * to be displayed to the user.
      */
-    public class NewsAdapter extends ArrayAdapter<News> {
+    public class NewsAdapter extends ArrayAdapter<LastNews> {
 
 
         /**
@@ -27,7 +27,7 @@ import java.util.List;
          * @param context of the app
          * @param news    is the list of earthquakes, which is the data source of the adapter
          */
-        public NewsAdapter(Context context, List<News> news) {
+        public NewsAdapter(Context context, List<LastNews> news) {
             super(context, 0, news);
         }
 
@@ -48,7 +48,7 @@ import java.util.List;
             }
 
             // Find the earthquake at the given position in the list of earthquakes
-            News currentNews = getItem(position);
+            LastNews currentNews = getItem(position);
 
             // Find the TextView with view ID section
             TextView sectionView = (TextView) listItemView.findViewById(R.id.section);

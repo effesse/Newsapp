@@ -33,10 +33,11 @@ public final class QueryUtils {
     }
 
     /**
-    * Query the The Guardian dataset and return a list of {@link News} objects.
+    * Query the The Guardian dataset and return a list of {@link LastNews} objects.
     */
 
-        public static List<News> fetchNewsData(String requestUrl) {
+        public static List<LastNews> fetchNewsData(String requestUrl) {
+
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -48,8 +49,11 @@ public final class QueryUtils {
         Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@linkNews}
-        return extractFeatureFromJson(jsonResponse);
+        // Extract relevant fields from the JSON response and create a list of {@linkLastNews}
+        List <LastNews> news =  extractFeatureFromJson(jsonResponse);
+
+        //Return the list of {@linkLastNews}
+        return news;
         }
 
         /**
@@ -130,10 +134,10 @@ public final class QueryUtils {
 
 
                 /**
-                 * Return a list of {@link News} objects that has been built up from
+                 * Return a list of {@link LastNews} objects that has been built up from
                  * parsing the given JSON response.
                  */
-                private static List<News> extractFeatureFromJson(String newsJSON) {
+                private static List<LastNews> extractFeatureFromJson(String newsJSON) {
 
                 // If the JSON string is empty or null, then return early.
                 if (TextUtils.isEmpty(newsJSON)) {
@@ -141,7 +145,7 @@ public final class QueryUtils {
                 }
 
                     // Create an empty ArrayList that we can start adding news to
-                    List<News> lastNews = new ArrayList<>();
+                    List<LastNews> news = new ArrayList<>();
 
                     // Try to parse the JSON response string. If there's a problem with the way the JSON
                     // is formatted, a JSONException exception object will be thrown.
@@ -181,9 +185,9 @@ public final class QueryUtils {
                             String byLine = jsonFieldsObject.optString("byline");
 
 
-                            News news = new News(section, title, byLine, date, urlNews);
+                            LastNews data= new LastNews(section, title, byLine, date, urlNews);
 
-                            lastNews.add(news);
+                            news.add(data);
                         }
 
                     } catch (JSONException e) {
@@ -193,8 +197,8 @@ public final class QueryUtils {
                         Log.e("QueryUtils", "Problem parsing the news JSON results", e);
                     }
 
-                    // Return the list of earthquakes
-                    return lastNews;
+                    // Return the list of news
+                    return news;
                 }
 
             }

@@ -3,8 +3,6 @@ package com.example.android.newsapp;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import android.content.Context;
-
 import java.util.List;
 
     /**
@@ -44,7 +42,7 @@ import java.util.List;
                 return null;
             }
 
-            // Perform the network request, parse the response, and extract a list of earthquakes.
+            // Perform the network request, parse the response, and extract a list of news.
             List<News> news = QueryUtils.fetchNewsData(mUrlNews);
             return news;
         }

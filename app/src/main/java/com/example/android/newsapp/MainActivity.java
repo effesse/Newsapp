@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements
      * URL for news data from The Guardian
      */
     private static final String THE_GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?show-fields=byline&section=politics|business|sport&api-key=test";
+            "https://content.guardianapis.com/search?show-fields=byline&section=politics|business|sport&api-key=1fa815fa-88df-43fd-9acf-15085e05207d";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current earthquake that was clicked on
-                News currentEarthquake = mAdapter.getItem(position);
+                News currentNews = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
+                Uri newsUri = Uri.parse(currentNews.getUrl());
 
                 // Create a new intent to view the earthquake URI
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
                 // Send the intent to launch a new activity
                 startActivity(websiteIntent);
