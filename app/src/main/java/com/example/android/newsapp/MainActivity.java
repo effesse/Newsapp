@@ -19,7 +19,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<List<News>> {
+        LoaderManager.LoaderCallbacks<List<LastNews>> {
 
     private static final String LOG_TAG = MainActivity.class.getName();
 
@@ -52,20 +52,23 @@ public class MainActivity extends AppCompatActivity implements
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         newsListView.setEmptyView(mEmptyStateTextView);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
-        mAdapter = new NewsAdapter(this, new ArrayList<News>());
+        // Create a new adapter that takes an empty list of news as input
+        mAdapter = new NewsAdapter(this, new ArrayList<LastNews>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         newsListView.setAdapter(mAdapter);
 
         // Set an item click listener on the ListView, which sends an intent to a web browser
-        // to open a website with more information about the selected earthquake.
+        // to open a website with more information about the selected news.
+
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Find the current earthquake that was clicked on
-                News currentNews = mAdapter.getItem(position);
+
+
+                // Find the current news that was clicked on
+                LastNews currentNews = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri newsUri = Uri.parse(currentNews.getUrl());
@@ -107,13 +110,13 @@ public class MainActivity extends AppCompatActivity implements
 
 
     @Override
-    public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<LastNews>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
         return new NewsLoader(this, THE_GUARDIAN_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
+    public void onLoadFinished(Loader<List<LastNews>> loader, List<LastNews> news) {
         // Hide loading indicator because the data has been loaded
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
     @Override
-    public void onLoaderReset(Loader<List<News>> loader) {
+    public void onLoaderReset(Loader<List<LastNews>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }

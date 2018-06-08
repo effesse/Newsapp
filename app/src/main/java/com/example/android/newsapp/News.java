@@ -5,9 +5,9 @@ import java.net.URL;
 import java.util.Date;
 
 /**
- * An {@link News} object contains information related to a single news.
+ * An {@link LastNews} object contains information related to a single news.
  */
-public class News {
+public class LastNews {
 
     /** Section of the news */
     private String mSection;
@@ -26,7 +26,7 @@ public class News {
 
 
     /**
-     * Constructs a new {@link News} object.
+     * Constructs a new {@link LastNews} object.
      *
      * @param section is the section of the news
      * @param title is the title of the news
@@ -34,7 +34,7 @@ public class News {
      * @param publicationDate is when the news was published
      * @param urlNews is th url of the news
      */
-    public News(String section, String title, String byLine, String publicationDate, String urlNews) {
+    public LastNews(String section, String title, String byLine, String publicationDate, String urlNews) {
         mSection = section;
         mTitle = title;
         mByLine = byLine;
