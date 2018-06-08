@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <!-- Text color for the details of the earthquake in the list item -->
+    <color name="textColorNewsDetails">#0191ca</color>
+
+    <!-- Text color for the primary location of the earthquake in the list item -->
+    <color name="textColorNews">#2B3D4D</color>
+
+
+    <!-- Color for section -->
+    <color name="section1">#ff0008</color>
+
+</resources>
