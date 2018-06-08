@@ -151,22 +151,30 @@ public final class QueryUtils {
 
                     // Create a JSONObject from the JSON response string
                         JSONObject baseJsonResponse = new JSONObject(newsJSON);
+
+                        //Get 'response' object
                         JSONObject newsObject = baseJsonResponse.getJSONObject("response");
-                        
+
+
+                        //Get 'result' array
+                        JSONArray newsArray = newsObject.optJSONArray("results");
+
 
                         for (int i = 0; i < newsObject.length(); i++) {
                             //All of our code in the loop
-                            JSONObject currentNews = newsObject.getJSONObject(i);
-                            JSONObject results = currentNews.getJSONObject("results");
-                            String section = results.getString("sectionName");
-                            String title = results.getString("webTitle");
-                            String date = results.getString("webPublicationDate");
+                            JSONObject currentNews = newsArray.getJSONObject(i);
 
-                            String urlNews = results.getString("webUrl");
+                            JSONObject results = currentNews.getJSONObject("results");
+
+                            String section = results.optString("sectionName");
+                            String title = results.optString("webTitle");
+                            String date = results.optString("webPublicationDate");
+
+                            String urlNews = results.optString("webUrl");
 
 
                             // Get 'fields' object
-                            JSONObject jsonFieldsObject = baseJsonResponse.getJSONObject("fields");
+                            JSONObject jsonFieldsObject = results.getJSONObject("fields");
 
                             // Get properties from 'fields'
 
